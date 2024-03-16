@@ -1,6 +1,6 @@
 ## Results
 
-- Training stage
+- Training stage (**without** Task-specific Training Data)
 
   - `BERT-base + Translated ReLU`
 
@@ -42,7 +42,7 @@
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
     ```
 
-- Fine-tuning stage
+- Fine-tuning stage (**with** Task-specific Training Data)
 
   - `BERT-base + Smooth K2 Loss`
 
