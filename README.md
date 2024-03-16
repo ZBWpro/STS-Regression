@@ -50,7 +50,7 @@
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
     | STS12 | STS13 | STS14 | STS15 | STS16 | STSBenchmark | SICKRelatedness |  Avg. |
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
-    | 73.91 | 86.96 | 85.20 | 85.88 | 79.37 |    83.07     |      77.01      | 81.63 |
+    | 73.68 | 88.42 | 86.10 | 86.56 | 79.63 |    84.12     |      82.01      | 82.93 |
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
     ```
 
@@ -60,19 +60,24 @@
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
     | STS12 | STS13 | STS14 | STS15 | STS16 | STSBenchmark | SICKRelatedness |  Avg. |
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
-    | 75.04 | 87.53 | 83.44 | 87.26 | 82.11 |    84.59     |      77.77      | 82.53 |
+    | 73.83 | 89.00 | 84.16 | 87.95 | 81.94 |    84.64     |      81.07      | 83.23 |
     +-------+-------+-------+-------+-------+--------------+-----------------+-------+
     ```
 
 ## Data
 
 - Training data: `nli_012.csv`
-- Fine-tuning data: `stsb-train-round.jsonl`
+- Fine-tuning data: `sts-sick-round.jsonl`
 - Link: https://drive.google.com/drive/folders/1ZL8gMOsxn6JFsH7h0vSSb1PjwFrdO-LQ?usp=sharing
 
 ## Checkpoints
 
 - Link:https://drive.google.com/drive/folders/1-te5DByiDpcKd-AxZPmCEgkRqnaTvzmk?usp=sharing
+
+  ```python
+  tlu: TranslatedReLU
+  sk2: SmoothK2Loss
+  ```
 
 ## Setup
 
@@ -82,4 +87,3 @@
 nohup torchrun --nproc_per_node=4 train.py > nohup.out &
 nohup torchrun --nproc_per_node=4 tune.py > nohup.out &
 ```
-

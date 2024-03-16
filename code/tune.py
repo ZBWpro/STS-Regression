@@ -24,27 +24,27 @@ from transformers import get_linear_schedule_with_warmup
 
 '''
 tune RoBERTa-base
-    source = 'sts-b-round'
+    loss_function = SmoothK2Loss(threshold=0.25, k=3)
+    source = 'sts-sick-round'
     bert_learing_rate = 4e-5
     epoch, batch_size = 5, 4
     evaluation_per_step = 50
-    SmoothK2Loss(threshold=0.25, k=3)
 
 tune BERT-base
-    source = 'sts-b-round'
+    loss_function = SmoothK2Loss(threshold=0.25, k=4)
+    source = 'sts-sick-round'
     bert_learing_rate = 5e-5
     epoch, batch_size = 5, 4
     evaluation_per_step = 50
-    SmoothK2Loss(threshold=0.25, k=4)
 '''
 
 # path
 save_path = './save'
-best_model_path = './save/roberta-train.pth'
-bert_path = '../../../models/roberta-base'
+best_model_path = './save/train-bert-sk2-76.03.pth'
+bert_path = '../../../models/bert-base-uncased'
 
 # hyper-parameter
-source = 'sts-b-round'
+source = 'sts-sick-round'
 bert_learing_rate = 5e-5
 epoch, batch_size = 5, 4
 evaluation_per_step = 50
@@ -89,9 +89,8 @@ def main():
     model = nn.parallel.DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank)
     
     # prepare data
-    if source == 'sts-b-round':
-        # features: ['gold_label', 'sentence1', 'sentence2']  num_rows: 5749
-        tune_data = load_dataset('json', data_dir='../data', data_files='stsb-train-round.jsonl', cache_dir='./cache')
+    if source == 'sts-sick-round':
+        tune_data = load_dataset('json', data_dir='../data', data_files='sts-sick-round.jsonl', cache_dir='./cache')
     else:
         raise ValueError(f'unknown data source : {source}')
     
@@ -160,7 +159,7 @@ def main():
             label = torch.FloatTensor(list(map(int, batch[-1]))).cuda()
             label = label.reshape(label.shape[0], 1)
 
-            loss_function = SmoothK2Loss(threshold=0.25, k=3.5)
+            loss_function = SmoothK2Loss(threshold=0.25, k=4)
             loss = loss_function(prediction, label)
             loss.backward()
 
@@ -174,7 +173,7 @@ def main():
             steps += dist.get_world_size()
 
             if steps < evaluation_per_step:
-                continue           
+                continue
             
             steps = 0
             model.eval()
@@ -188,7 +187,7 @@ def main():
                 if len(batch) >= 1 and len(batch[0]) >= 1 and isinstance(batch[0][0], bytes):
                     batch = [[word.decode('utf-8') for word in sentence] for sentence in batch]
 
-                # batch is divided by token. we need to form sentences           
+                # batch is divided by token. we need to form sentences
                 sentences = [' '.join(sentence) for sentence in batch]
 
                 batch = tokenizer.batch_encode_plus(
