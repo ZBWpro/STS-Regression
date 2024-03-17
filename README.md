@@ -72,7 +72,7 @@
 
 ## Checkpoints
 
-- Link:https://drive.google.com/drive/folders/1-te5DByiDpcKd-AxZPmCEgkRqnaTvzmk?usp=sharing
+- Link: https://drive.google.com/drive/folders/1-te5DByiDpcKd-AxZPmCEgkRqnaTvzmk?usp=sharing
 
   ```python
   tlu: TranslatedReLU
