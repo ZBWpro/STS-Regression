@@ -10,7 +10,7 @@
     BERT_LEARNING_RATE = 2e-5
     GRADIENT_CLIPPING = 2.0
     
-(train) BERT-base + Translated ReLU Loss(k = 2, threshold = 0.25) => 74.21
+(train) BERT-base + Translated ReLU Loss(k = 2.5, threshold = 0.25) => 74.28
     BERT_LEARNING_RATE = 2e-5
 
 (train) RoBERTa-base + Translated ReLU Loss(k = 1, threshold = 0.25) => 74.28
