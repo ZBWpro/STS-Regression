@@ -84,6 +84,7 @@
 - Python: 3.9.16
 
 ```bash
+pip install -r requirements.txt
 nohup torchrun --nproc_per_node=4 train.py > nohup.out &
 nohup torchrun --nproc_per_node=4 tune.py > nohup.out &
 ```
