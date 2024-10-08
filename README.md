@@ -75,10 +75,10 @@ __This paper has been accepted to EMNLP 2024. (Main)__
 
   Paper: [CoT-BERT: Enhancing Unsupervised Sentence Representation through Chain-of-Thought](https://arxiv.org/abs/2309.11143) 
 
-  Conference::star2: ICANN 2024, **Oral**
+  Conference: :star2: ICANN 2024, **Oral**
 
 - Github: [PretCoTandKE](https://github.com/ZBWpro/PretCoTandKE)
 
   Paper: [Simple Techniques for Enhancing Sentence Embeddings in Generative Language Models](https://arxiv.org/abs/2404.03921)​ 
 
-  Conference::star2: ICIC 2024, **Oral**
+  Conference: :star2: ICIC 2024, **Oral**
