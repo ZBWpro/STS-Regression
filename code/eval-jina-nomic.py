@@ -20,7 +20,7 @@ sent_eval_mode = 'test'
 tasks = ['STS12', 'STS13', 'STS14', 'STS15', 'STS16', 'STSBenchmark', 'SICKRelatedness']
 
 data_path = '../SentEval/data'
-best_model_path = './save/sj_best_model.pth'
+best_model_path = './save/j_best_model.pth'
 model_path = 'jinaai/jina-embeddings-v2-base-en'
 # 'jinaai/jina-embeddings-v2-base-en' # '../../models/nomic-embed-text-v1'
 
@@ -34,12 +34,10 @@ def show_table(task_names, scores):
     print(table)
 
 def main():
-    if 'cse' in best_model_path:
-        model = CSE_Model(model_path=model_path)
-    elif 'bert' in model_path:
+    if 'bert' in model_path:
         model = Average_BERT(bert_path=model_path)
     else:
-        model = Dual_Tower(model_path=model_path, regression=False)
+        model = Dual_Tower(model_path=model_path)
     
     if os.path.exists(best_model_path):
         check_point = torch.load(best_model_path)

@@ -67,7 +67,7 @@ __This paper has been accepted to EMNLP 2024. (Main)__
 
 - Github: [Pcc-tuning](https://github.com/ZBWpro/Pcc-tuning)
 
-  Paper: [Pcc-tuning: Breaking the Contrastive Learning Ceiling in Semantic Textual Similarity](https://arxiv.org/abs/2406.09790)​ 
+  Paper: [Pcc-tuning: Breaking the Contrastive Learning Ceiling in Semantic Textual Similarity](https://arxiv.org/abs/2406.09790)
 
   Conference: :star2: EMNLP 2024, **Main**
 
